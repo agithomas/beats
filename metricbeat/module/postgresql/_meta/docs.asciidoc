@@ -53,6 +53,7 @@ precedence over those specified in the `username` and `password` config options.
   hosts: ["postgres://localhost:5432"]
   username: root
   password: test
+  url: abcd
 ----
 
 [float]
