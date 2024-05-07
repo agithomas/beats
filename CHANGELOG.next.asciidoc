@@ -10,7 +10,6 @@ https://github.com/elastic/beats/compare/v8.8.1\...main[Check the HEAD diff]
 
 *Affecting all Beats*
 
-
 *Auditbeat*
 
 
@@ -95,6 +94,11 @@ https://github.com/elastic/beats/compare/v8.8.1\...main[Check the HEAD diff]
 
 *Auditbeat*
 - Set field types to correctly match ECS in sessionmd processor {issue}38955[38955] {pull}38994[38994]
+- Fix failing to enrich process events in sessionmd processor {issue}38955[38955] {pull}39173[39173] {pull}39243[39243]
+- Prevent scenario of losing children-related file events in a directory for recursive fsnotify backend of auditbeat file integrity module {pull}39133[39133]
+- Allow extra syscalls by auditbeat required in FIM with kprobes back-end {pull}39361[39361]
+- Fix losing events in FIM for OS X by allowing always to walk an added directory to monitor {pull}39362[39362]
+
 
 *Filebeat*
 
@@ -139,6 +143,7 @@ https://github.com/elastic/beats/compare/v8.8.1\...main[Check the HEAD diff]
 - Updated Websocket input title to align with existing inputs {pull}39006[39006]
 - Restore netflow input on Windows {pull}39024[39024]
 - Upgrade azure-event-hubs-go and azure-storage-blob-go dependencies. {pull}38861[38861]
+- Fix concurrency/error handling bugs in the AWS S3 input that could drop data and prevent ingestion of large buckets. {pull}39131[39131]
 
 *Heartbeat*
 
@@ -155,6 +160,8 @@ https://github.com/elastic/beats/compare/v8.8.1\...main[Check the HEAD diff]
 - Fix Azure Monitor 429 error by causing metricbeat to retry the request again. {pull}38294[38294]
 - Fix fields not being parsed correctly in postgresql/database {issue}25301[25301] {pull}37720[37720]
 - rabbitmq/queue - Change the mapping type of `rabbitmq.queue.consumers.utilisation.pct` to `scaled_float` from `long` because the values fall within the range of `[0.0, 1.0]`. Previously, conversion to integer resulted in reporting either `0` or `1`.
+- Fix timeout caused by the retrival of which indices are hidden {pull}39165[39165]
+- Fix Azure Monitor support for multiple aggregation types {issue}39192[39192] {pull}39204[39204]
 
 *Osquerybeat*
 
@@ -182,6 +189,8 @@ https://github.com/elastic/beats/compare/v8.8.1\...main[Check the HEAD diff]
 - Update to Go 1.21.9. {pulk}38727[38727]
 - Enable early event encoding in the Elasticsearch output, improving cpu and memory use {pull}38572[38572]
 - The environment variable `BEATS_ADD_CLOUD_METADATA_PROVIDERS` overrides configured/default `add_cloud_metadata` providers {pull}38669[38669]
+- Introduce log message for not supported annotations for Hints based autodiscover {pull}38213[38213]
+
 
 *Auditbeat*
 
@@ -194,6 +203,9 @@ https://github.com/elastic/beats/compare/v8.8.1\...main[Check the HEAD diff]
 - Add container id to file events (Linux only, eBPF backend). {pull}38328[38328]
 - Add procfs backend to the `add_session_metadata` processor. {pull}38799[38799]
 - Add process.entity_id, process.group.name and process.group.id in add_process_metadata processor. Make fim module with kprobes backend to always add an appropriately configured add_process_metadata processor to enrich file events {pull}38776[38776]
+
+*Auditbeat*
+
 
 *Filebeat*
 
@@ -248,6 +260,7 @@ https://github.com/elastic/beats/compare/v8.8.1\...main[Check the HEAD diff]
 - Add debugging breadcrumb to logs when writing request trace log. {pull}38636[38636]
 - added benchmark input {pull}37437[37437]
 - added benchmark input and discard output {pull}37437[37437]
+- Ensure all responses sent by HTTP Endpoint are HTML-escaped. {pull}39329[39329]
 
 *Auditbeat*
 
@@ -275,6 +288,7 @@ https://github.com/elastic/beats/compare/v8.8.1\...main[Check the HEAD diff]
 - Add new memory/cgroup metrics to Kibana module {pull}37232[37232]
 - Add SSL support to mysql module {pull}37997[37997]
 - Add SSL support for aerospike module {pull}38126[38126]
+- Add last_terminated_timestamp metric in kubernetes module {pull}39200[39200] {issue}3802[3802]
 
 
 *Metricbeat*
@@ -328,6 +342,9 @@ https://github.com/elastic/beats/compare/v8.8.1\...main[Check the HEAD diff]
 
 
 ==== Known Issues
+
+
+
 
 
 
